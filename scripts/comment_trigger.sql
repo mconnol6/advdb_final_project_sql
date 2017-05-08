@@ -1,0 +1,9 @@
+CREATE OR REPLACE TRIGGER comment_trigger
+BEFORE INSERT
+ON comments
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT comment_sequence.nextval INTO :NEW.comment_id FROM DUAL;
+END;
+/
